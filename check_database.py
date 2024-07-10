@@ -10,7 +10,7 @@ if __name__ == '__main__':
     # Insert new data
     #loaded_db.insert('users', [None, 'Antonio', 35])
     #loaded_db.commit('users')
-    #print("Inserte new user in users")
+    #print("Inserted new user in users")
 
     # Select all data
     print("\nSelect all users table:", loaded_db.select_all('users'))
