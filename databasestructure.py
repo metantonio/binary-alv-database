@@ -254,7 +254,7 @@ class CustomDatabase:
                     row[table["key_index"]] = None
                 self.insert(table_name, row)
 
-    def select_by_column_value(self, table_name, column_name, value):
+    """ def select_by_column_value(self, table_name, column_name, value):
         if table_name not in self.tables:
             raise ValueError("Table does not exist.")
         
@@ -270,6 +270,41 @@ class CustomDatabase:
             if node.value[column_index] == value:
                 result.append(node.value)
         
+        return result """
+    
+    def select_by_column_value(self, table_name, column_name, operator, value):
+        if table_name not in self.tables:
+            raise ValueError("Table does not exist.")
+        
+        table = self.tables[table_name]
+        
+        if column_name not in table["columns"]:
+            raise ValueError(f"Column '{column_name}' does not exist in table '{table_name}'.")
+        
+        column_index = table["columns"].index(column_name)
+        
+        result = []
+        for node in self._inorder_traversal(table["tree"].root):
+            column_value = node.value[column_index]
+            if self._compare(column_value, operator, value):
+                result.append(node.value)
+        
         return result
+
+    def _compare(self, column_value, operator, value):
+        if operator == '==':
+            return column_value == value
+        elif operator == '!=':
+            return column_value != value
+        elif operator == '<':
+            return column_value < value
+        elif operator == '<=':
+            return column_value <= value
+        elif operator == '>':
+            return column_value > value
+        elif operator == '>=':
+            return column_value >= value
+        else:
+            raise ValueError(f"Invalid operator '{operator}'. Valid operators are ==, !=, <, <=, >, >=.")
 
 

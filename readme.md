@@ -42,10 +42,19 @@ print(user)
 ### Select data based on a value of a column
 
 ```python
-# Select the user with age=30
-user = db.select_by_column_value("users", "age", 30)
+# Select the user with age > 25
+user = db.select_by_column_value("users", "age", '>', 25)
 print(user)
 ```
+
+Comparisson operators added:
+
+- `>`
+- `>=`
+- `<`
+- `<=`
+- `==`
+- `!=`
 
 ### Select data whole table
 
