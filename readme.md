@@ -125,10 +125,6 @@ id | name | age
 
 If we want to join tables, we must do it based on the `key_index` value.
 
- - ``key_index1 = 0``: This means that the join key for the first table (``users``) is in the first column (``id``).
- - ``key_index2 = 1``: This means that the join key for the second table (``orders``) is in the second column (``user_id``).
-
-
 So, to join table `users` and table `orders` by `user_id` column:
 
 ```python
@@ -141,6 +137,9 @@ print(headers)
 for data in joined_data:
     print(data)
 ```
+
+ - ``key_index1 = 0``: This means that the join key for the first table (``users``) is in the first column (``id``).
+ - ``key_index2 = 1``: This means that the join key for the second table (``orders``) is in the second column (``user_id``).
 
 Note: Check `test_joining.py` file
 
