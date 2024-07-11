@@ -131,6 +131,13 @@ for data in joined_data:
 
 Note: Check `test_joining.py` file
 
+ - Result will be:
+
+id | name | age | order_id | user_id |  product  
+:--- | :---: | :---: | :--- | :---: | :---:
+| 0  | Charlie|  28 | 101    |    0    |  Laptop   |
+| 1  | Alice  |  30 |   102    |    1    | Smartphone|
+
 ## Transactions
 
 ### Rollback
