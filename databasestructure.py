@@ -193,6 +193,10 @@ class CustomDatabase:
         if table_name not in self.tables:
             raise ValueError("Table does not exist.")
         nodes = self.tables[table_name]["tree"].select_all()
+        #print("nodes:",nodes) # should print memory address
+        for node in nodes:
+            if not hasattr(node, 'value'):
+                raise AttributeError(f"Node {node} does not have a 'value' attribute")
         return [node.value for node in nodes]
 
     def update(self, table_name, key, data):
