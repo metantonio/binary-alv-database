@@ -2,7 +2,20 @@
 
 An implementation of the AVL tree to store data. I'm also include basic transaction handling with commit and rollback methods using in-memory snapshots and saving it to a .pkl (binary file)
 
+# The Only necessary file
+
+`databasestrucure.py`
+
 # How to Use
+
+Note: see an example with `main.py` file
+
+## Import databasestructure
+
+```python
+import pickle
+from databasestructure import *
+```
 
 ## Create a database object
 
