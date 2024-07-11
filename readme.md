@@ -124,7 +124,7 @@ id | name | age
 :--- | :---: | :---:
 |   101    |    0    |  Laptop   |
 |   102    |    1    | Smartphone|
-
+| 103 | 0 | Phone |
 
 If we want to join tables, we must do it based on the `key_index` value.
 
@@ -152,6 +152,7 @@ id | name | age | order_id | user_id |  product
 :--- | :---: | :---: | :--- | :---: | :---:
 | 0  | Charlie|  28 | 101    |    0    |  Laptop   |
 | 1  | Alice  |  30 |   102    |    1    | Smartphone|
+| 0  | Charlie|  28 | 103    |    0    |  Phone   |
 
 ## Transactions
 
