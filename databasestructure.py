@@ -1,4 +1,5 @@
 import pickle
+import csv
 
 class AVLNode:
     def __init__(self, key, value):
@@ -239,5 +240,36 @@ class CustomDatabase:
             return []
         return self._inorder_traversal(root.left) + [root] + self._inorder_traversal(root.right)
 
+    def load_from_csv(self, table_name, file_name):
+        if table_name not in self.tables:
+            raise ValueError("Table does not exist.")
+        
+        table = self.tables[table_name]
+        
+        with open(file_name, newline='') as csvfile:
+            reader = csv.reader(csvfile)
+            headers = next(reader)  # Leer encabezados
+            for row in reader:
+                if table["key_index"] is not None and row[table["key_index"]] == '':
+                    row[table["key_index"]] = None
+                self.insert(table_name, row)
+
+    def select_by_column_value(self, table_name, column_name, value):
+        if table_name not in self.tables:
+            raise ValueError("Table does not exist.")
+        
+        table = self.tables[table_name]
+        
+        if column_name not in table["columns"]:
+            raise ValueError(f"Column '{column_name}' does not exist in table '{table_name}'.")
+        
+        column_index = table["columns"].index(column_name)
+        
+        result = []
+        for node in self._inorder_traversal(table["tree"].root):
+            if node.value[column_index] == value:
+                result.append(node.value)
+        
+        return result
 
 
