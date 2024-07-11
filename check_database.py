@@ -8,9 +8,9 @@ if __name__ == '__main__':
     print("\nLoaded database user with id 0:", loaded_db.select('users', 0))
 
     # Insert new data
-    #loaded_db.insert('users', [None, 'Antonio', 35])
-    #loaded_db.commit('users')
-    #print("Inserted new user in users")
+    loaded_db.insert('users', [None, 'Antonio', 35])
+    loaded_db.commit('users')
+    print("Inserted new user in users")
 
     # Select all data
     print("\nSelect all users table:", loaded_db.select_all('users'))
