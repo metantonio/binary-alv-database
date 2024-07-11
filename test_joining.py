@@ -16,12 +16,15 @@ if __name__ == '__main__':
         db_test.insert('users', [None, 'Alice', 30])
         db_test.insert('orders', [101, 0, 'Laptop'])
         db_test.insert('orders', [102, 1, 'Smartphone'])
+        db_test.insert('orders', [103, 0, 'Phone'])
 
         # Commit transactions
+        print("starting commits")
         db_test.commit('users')
         db_test.commit('orders')
 
         # Perform the join
+        print("starting joinin")
         headers, joined_data = db_test.join('users', 'orders', key_index1=0, key_index2=1)
 
         # Display the joined data
@@ -32,7 +35,7 @@ if __name__ == '__main__':
             print(data)
 
         # Save the database in binary format
-        db_test.save('./test_database.pkl')
+        db_test.save('./test_joining_db.pkl')
 
     except Exception as err:
         print("Error: ", str(err))

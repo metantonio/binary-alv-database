@@ -181,6 +181,7 @@ class CustomDatabase:
             data[table["key_index"]] = table["auto_increment"]
             table["auto_increment"] += 1
         key = data[table["key_index"]]
+        #print("insert key: ", key)
         table["tree"].insert(key, data)
 
     def select(self, table_name, key):
@@ -304,8 +305,8 @@ class CustomDatabase:
         table1 = self.tables[table1_name]
         table2 = self.tables[table2_name]
 
-        table1_data = self.select_all(table1_name)
-        table2_data = self.select_all(table2_name)
+        header1, table1_data = self.select_all(table1_name)
+        header2, table2_data = self.select_all(table2_name)
 
         joined_data = []
 
