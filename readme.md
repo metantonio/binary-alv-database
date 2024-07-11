@@ -47,7 +47,7 @@ user = db.select_by_column_value("users", "age", '>', 25)
 print(user)
 ```
 
-Comparisson operators added:
+Valid operators:
 
 - `>`
 - `>=`
@@ -124,7 +124,7 @@ db = CustomDatabase.load('./avl_database.pkl')
 
 ## Load data from a .csv file
 
-You must have a .csv with the same structure that the table you want to upload. Let's say table `users`, you will need a .csv file with like the example:
+You must have a .csv with the same structure that the table you want to upload. Let's say table `users`, you will need a .csv file with a structure like the example:
 
 id | name | age
 --- | --- | ---
