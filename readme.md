@@ -33,7 +33,7 @@ Note: That for `id` field that is the index, you use None to use the automatic a
 
 ### Select data based on the index
 
-This will look on the `id` column, not on `key_index` column.
+This will look on the `id` column, not on `key_index` pseudo-column.
 
 ```python
 # Select the user with id=0
