@@ -200,3 +200,7 @@ id | name | age
 ```python
 db.load_from_csv("users", "./data.csv")
 ```
+
+## Added Multi-threading operations
+
+Please check: `main_multi_threading.py` file
