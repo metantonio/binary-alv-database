@@ -127,7 +127,7 @@ db = CustomDatabase.load('./avl_database.pkl')
 You must have a .csv with the same structure that the table you want to upload. Let's say table `users`, you will need a .csv file with a structure like the example:
 
 id | name | age
---- | --- | ---
+:--- | :---: | :---:
 1 | John | 25
 2 | Jane | 30
 3 | Bob | 22
