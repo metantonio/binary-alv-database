@@ -100,6 +100,6 @@ db.save('./avl_database.pkl')
 ## Load data from a .pkl file
 
 ```python
-# Save the database in binary format
+# Load the database in binary format
 db = CustomDatabase.load('./avl_database.pkl')
 ```
