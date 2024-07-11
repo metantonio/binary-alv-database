@@ -18,7 +18,7 @@ Example about how to create a table named users, with columns `id`, `name` and `
 db.create_table('users', ['id', 'name', 'age'], key_index=0)
 ```
 
-Note: ``key_index`` will start on 0 and autoincrement is automatic by default. The `id` field is different from ``key_index``, but `id` will works as primary key. `key_index` refers to index position in a list.
+Note: ``key_index`` is wich column index has the `id` column, in this case `id` is on the first column, that's why **key_index=0**.
 
 ## Insert data to table
 
@@ -33,7 +33,7 @@ Note: That for `id` field that is the index, you use None to use the automatic a
 
 ### Select data based on the index
 
-This will look on the `id` column, not on `key_index` pseudo-column.
+This will look on the `id` column.
 
 ```python
 # Select the user with id=0

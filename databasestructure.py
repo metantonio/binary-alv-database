@@ -257,24 +257,6 @@ class CustomDatabase:
                 if table["key_index"] is not None and row[table["key_index"]] == '':
                     row[table["key_index"]] = None
                 self.insert(table_name, row)
-
-    """ def select_by_column_value(self, table_name, column_name, value):
-        if table_name not in self.tables:
-            raise ValueError("Table does not exist.")
-        
-        table = self.tables[table_name]
-        
-        if column_name not in table["columns"]:
-            raise ValueError(f"Column '{column_name}' does not exist in table '{table_name}'.")
-        
-        column_index = table["columns"].index(column_name)
-        
-        result = []
-        for node in self._inorder_traversal(table["tree"].root):
-            if node.value[column_index] == value:
-                result.append(node.value)
-        
-        return result """
     
     def select_by_column_value(self, table_name, column_name, operator, value):
         if table_name not in self.tables:
@@ -312,3 +294,26 @@ class CustomDatabase:
             raise ValueError(f"Invalid operator '{operator}'. Valid operators are ==, !=, <, <=, >, >=.")
 
 
+    def join(self, table1_name, table2_name, key_index1=0, key_index2=0):
+        if table1_name not in self.tables or table2_name not in self.tables:
+            raise ValueError("One or both tables do not exist.")
+
+        table1 = self.tables[table1_name]
+        table2 = self.tables[table2_name]
+
+        table1_data = self.select_all(table1_name)
+        table2_data = self.select_all(table2_name)
+
+        joined_data = []
+
+        table2_dict = {row[key_index2]: row for row in table2_data}
+
+        headers = table1["columns"] + table2["columns"]
+
+        for row1 in table1_data:
+            key = row1[key_index1]
+            if key in table2_dict:
+                row2 = table2_dict[key]
+                joined_data.append(row1 + row2)
+
+        return headers, joined_data
