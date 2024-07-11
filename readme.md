@@ -18,7 +18,7 @@ Example about how to create a table named users, with columns `id`, `name` and `
 db.create_table('users', ['id', 'name', 'age'], key_index=0)
 ```
 
-Note: ``key_index`` is wich column index has the `id` column, in this case `id` is on the first column, that's why **key_index=0**.
+Note: ``key_index`` is wich column index has the `id` column, in this case `id` is on the first column, that's why **key_index = 0**.
 
 ## Insert data to table
 
@@ -27,7 +27,7 @@ db.insert('users', [None, 'Alice', 30])
 db.commit('users')
 ```
 
-Note: That for `id` field that is the index, you use None to use the automatic autoincrement
+Note: The `id` column is the index, you use ``None`` to use the automatic autoincrement feature
 
 ## Select (search) Data
 
