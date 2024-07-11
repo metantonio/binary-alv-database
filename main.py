@@ -26,7 +26,7 @@ if __name__ == '__main__':
 
         # Delete data
         db.delete('users', 1)
-        print("After delete user with id 1:", db.select('users', 1))
+        print("After delete user with id 1:", db.select_all('users'))
 
         # Add a new column
         db.add_column('users', 'email')
@@ -40,14 +40,20 @@ if __name__ == '__main__':
         print("Loaded database user with id 0:", loaded_db.select('users', 0))
 
         # Transaction example
-        db.insert('users', [None, 'Charlie', 28])
-        print("Before rollback user with id 2:", db.select('users', 2))
-        db.rollback('users')
-        print("After rollback user with id 2:", db.select('users', 2))
+        try:
+            db.insert('users', [None, 'Charlie', 28])
+            print("Before rollback user with latest id:", db.select_all('users'))
+            db.rollback('users')
+            print("After rollback user with latest:", db.select_all('users'))
+        except Exception as rollback_error:
+            print("rollback error: ",str(rollback_error))
 
-        db.insert('users', [None, 'Charlie', 28])
-        db.commit('users')
-        print("After commit user with id 2:", db.select('users', 2))
+        try:
+            db.insert('users', [None, 'Charlie', 28])
+            db.commit('users')
+            print("After commit user with latest id:", db.select_all('users'))
+        except Exception as commit_error:
+            print("commit error: ",str(commit_error))
     
     except Exception as error:
         print(str(error))

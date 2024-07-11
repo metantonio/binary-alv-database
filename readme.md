@@ -97,7 +97,7 @@ db.delete('users', 1)
 db.insert('users', [None, 'Charlie', 28])
 print("Before rollback user with id 2:", db.select('users', 2))
 db.rollback('users')
-print("After rollback user with id 2:", db.select('users', 2))
+print("After rollback user with id 2:", db.select_all('users'))
 ```
 
 ### Commit
