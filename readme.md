@@ -4,7 +4,7 @@ An implementation of the AVL tree to store data. I'm also include basic transact
 
 # The Only necessary file
 
-`databasestrucure.py`
+`databasestructure.py`
 
 # How to Use
 
