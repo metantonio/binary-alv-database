@@ -91,6 +91,46 @@ print(db.select_all('users'))
 db.delete('users', 1)
 ```
 
+## Joining Operation
+
+Let's say that we have these tables: 
+
+- Table `users`:
+
+id | name | age
+:--- | :---: | :---:
+| 0  | Charlie|  28 |
+| 1  | Alice  |  30 |
+
+- Table `orders`:
+
+| order_id | user_id |  product  
+:--- | :---: | :---:
+|   101    |    0    |  Laptop   |
+|   102    |    1    | Smartphone|
+
+
+If we want to join tables, we must do it based on the `key_index` value.
+
+ - ``key_index1 = 0``: This means that the join key for the first table (``users``) is in the first column (``id``).
+ - ``key_index2 = 1``: This means that the join key for the second table (``orders``) is in the second column (``user_id``).
+
+
+So, to join table `users` and table `orders` by `user_id` column:
+
+```python
+# Perform the join
+headers, joined_data = db.join('users', 'orders', key_index1=0, key_index2=1)
+
+# Print the joined data
+print("Joined Data:\n")
+print(headers)
+for data in joined_data:
+    print(data)
+```
+
+Note: Check `test_joining.py` file
+
 ## Transactions
 
 ### Rollback
