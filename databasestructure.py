@@ -187,17 +187,19 @@ class CustomDatabase:
         if table_name not in self.tables:
             raise ValueError("Table does not exist.")
         node = self.tables[table_name]["tree"].search(key)
-        return node.value if node else None
+        headers = self.tables[table_name]["columns"]
+        return headers, node.value if node else None
     
     def select_all(self, table_name):
         if table_name not in self.tables:
             raise ValueError("Table does not exist.")
         nodes = self.tables[table_name]["tree"].select_all()
+        headers = self.tables[table_name]["columns"]
         #print("nodes:",nodes) # should print memory address
         for node in nodes:
             if not hasattr(node, 'value'):
                 raise AttributeError(f"Node {node} does not have a 'value' attribute")
-        return [node.value for node in nodes]
+        return headers, [node.value for node in nodes]
 
     def update(self, table_name, key, data):
         if table_name not in self.tables:
@@ -268,6 +270,7 @@ class CustomDatabase:
             raise ValueError(f"Column '{column_name}' does not exist in table '{table_name}'.")
         
         column_index = table["columns"].index(column_name)
+        headers = table["columns"]
         
         result = []
         for node in self._inorder_traversal(table["tree"].root):
@@ -275,7 +278,7 @@ class CustomDatabase:
             if self._compare(column_value, operator, value):
                 result.append(node.value)
         
-        return result
+        return headers, result
 
     def _compare(self, column_value, operator, value):
         if operator == '==':

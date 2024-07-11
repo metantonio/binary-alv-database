@@ -50,7 +50,8 @@ This will look on the `id` column.
 
 ```python
 # Select the user with id=0
-user = db.select('users', 0)
+headers, user = db.select('users', 0)
+print(headers)
 print(user)
 ```
 
@@ -58,7 +59,8 @@ print(user)
 
 ```python
 # Select the user with age > 25
-user = db.select_by_column_value("users", "age", '>', 25)
+headers, user = db.select_by_column_value("users", "age", '>', 25)
+print(headers)
 print(user)
 ```
 
@@ -75,7 +77,8 @@ Valid operators:
 
 ```python
 # Select table
-table = db.select_all('users')
+headers, table = db.select_all('users')
+print(headers)
 print(table)
 ```
 

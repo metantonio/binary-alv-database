@@ -12,8 +12,13 @@ if __name__ == '__main__':
     loaded_db.commit('users')
     print("Inserted new user in users")
 
+    # Select by value
+    header, user = loaded_db.select_by_column_value("users", "age", '>', 25)
+    print("\nSelect user row:", header, user)
+
     # Select all data
-    print("\nSelect all users table:", loaded_db.select_all('users'))
+    headers, table = loaded_db.select_all('users')
+    print("\nSelect all users table:", headers, table)
 
     # AFTER COMMITS ARE MADE, WRITE TO THE DATABASE
     loaded_db.save('./avl_database.pkl')
