@@ -29,7 +29,7 @@ db.commit('users')
 
 Note: That for `id` field that is the index, you use None to use the automatic autoincrement
 
-### Select (seach) Data
+### Select (search) Data
 
 #### Select data based on the index
 
