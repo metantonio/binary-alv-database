@@ -95,9 +95,9 @@ db.delete('users', 1)
 
 ```python
 db.insert('users', [None, 'Charlie', 28])
-print("Before rollback user with id 2:", db.select('users', 2))
+print("Before rollback user with latest id:", db.select_all('users'))
 db.rollback('users')
-print("After rollback user with id 2:", db.select_all('users'))
+print("After rollback user with latest:", db.select_all('users'))
 ```
 
 ### Commit
@@ -105,7 +105,7 @@ print("After rollback user with id 2:", db.select_all('users'))
 ```python
 db.insert('users', [None, 'Charlie', 28])
 db.commit('users')
-print("After commit user with id 2:", db.select('users', 2))
+print("After commit user with latest id:", db.select_all('users'))
 ```
 
 ## Save data to a .pkl file
