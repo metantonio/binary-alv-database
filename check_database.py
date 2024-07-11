@@ -5,7 +5,7 @@ if __name__ == '__main__':
 
     # Load the database from binary format
     loaded_db = CustomDatabase.load('./avl_database.pkl')
-    print("\nLoaded database user with id 0:", loaded_db.select('users', 0))
+    print("\nLoaded database user with id 0:", loaded_db.select('users', 2))
 
     # Insert new data
     loaded_db.insert('users', [None, 'Antonio', 35])
