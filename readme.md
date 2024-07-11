@@ -18,7 +18,7 @@ Example about how to create a table named users, with columns `id`, `name` and `
 db.create_table('users', ['id', 'name', 'age'], key_index=0)
 ```
 
-Note: Index will start on 0 and autoincrement is automatic by default
+Note: ``key_index`` will start on 0 and autoincrement is automatic by default. The `id` field is different from ``key_index``
 
 ## Insert data to table
 
