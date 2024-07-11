@@ -9,7 +9,7 @@ if __name__ == '__main__':
         db_test = CustomDatabase()
         # Create tables
         db_test.create_table('users', ['id', 'name', 'age'], key_index=0)
-        db_test.create_table('orders', ['order_id', 'user_id', 'product'], key_index=1)
+        db_test.create_table('orders', ['order_id', 'user_id', 'product'], key_index=0)
 
         # Insert data into tables
         db_test.insert('users', [None, 'Charlie', 28])

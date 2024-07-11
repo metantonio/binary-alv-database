@@ -310,14 +310,20 @@ class CustomDatabase:
 
         joined_data = []
 
-        table2_dict = {row[key_index2]: row for row in table2_data}
-
+        #print("table1_data: ", table1_data)
+        #print("table2_data: ", table2_data)
+        table2_dict = {row[key_index2]: [[*table2_data[row[key_index2]]], row] for row in table2_data}
+        #print("table2: ", table2_dict)
         headers = table1["columns"] + table2["columns"]
 
         for row1 in table1_data:
-            key = row1[key_index1]
+            key = row1[key_index1]            
+            #print('key: ',key)
             if key in table2_dict:
                 row2 = table2_dict[key]
-                joined_data.append(row1 + row2)
+                de_duplicates = list(map(list, set(map(tuple, row2))))
+                #print('row2',de_duplicates)
+                for item in de_duplicates:
+                    joined_data.append(row1 + item)
 
         return headers, joined_data
