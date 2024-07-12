@@ -1,6 +1,6 @@
 # Binary database using AVL tree data structure (Balanced-Binary Tree)
 
-An implementation of the AVL tree to store data. I'm also include basic transaction handling with commit and rollback methods using in-memory snapshots and saving it to a .pkl (binary file)
+An implementation of the [AVL tree](https://en.wikipedia.org/wiki/AVL_tree) to store data. I'm also include basic transaction handling with commit and rollback methods using in-memory snapshots and saving it to a .pkl (binary file)
 
 # The Only necessary file
 
