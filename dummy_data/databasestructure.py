@@ -257,7 +257,7 @@ class CustomDatabase:
             reader = csv.reader(csvfile)
             headers = next(reader)  # Leer encabezados
             for row in reader:
-                # try to convert to correct format
+                # Intentar convertir los valores a tipos apropiados
                 for i, value in enumerate(row):
                     if value.isdigit():
                         row[i] = int(value)
@@ -265,7 +265,7 @@ class CustomDatabase:
                         try:
                             row[i] = float(value)
                         except ValueError:
-                            pass  # keep as string
+                            pass  # Mantener como string si no es un número
 
                 if table["key_index"] is not None and row[table["key_index"]] == '':
                     row[table["key_index"]] = None

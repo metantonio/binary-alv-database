@@ -25,8 +25,8 @@ with open(file_path, mode='w', newline='') as file:
     # Generar y escribir los datos de los usuarios
     for user_id in range(1, num_users + 1):
         name = "Name " + str(user_id)
-        age = random.randint(min_age, max_age)  # Generar una edad aleatoria entre 18 y 90
-        writer.writerow([user_id, name, age])
+        age = int(random.randint(min_age, max_age))  # Generar una edad aleatoria entre 18 y 90
+        writer.writerow([int(user_id), name, age])
 
 print("File 1 generated")
 
@@ -40,7 +40,7 @@ with open(file_path2, mode='w', newline='') as file:
     # Generar y escribir los datos de los usuarios
     for order_id in range(1, num_users*2 + 1):
         product = random.choice(products)
-        user_id = random.randint(1, num_users)  # Generar una edad aleatoria entre 18 y 90
-        writer.writerow([order_id, user_id, product])
+        user_id = int(random.randint(1, num_users))  # Generar una edad aleatoria entre 18 y 90
+        writer.writerow([int(order_id), user_id, product])
 
 print("File 2 generated")
