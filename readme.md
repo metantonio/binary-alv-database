@@ -204,3 +204,21 @@ db.load_from_csv("users", "./data.csv")
 ## Added Multi-threading operations
 
 Please check: `main_multi_threading.py` file
+
+## Test
+
+Inside of the ``dummy_data`` folder, there a generator of dummy data and ``main_test.py`` that will execute basic operations to test the database performance:
+
+The results may vary due to CPU capabilities, and if you want to use multi-thread. For test support i used only 1 thread and a 11th Gen Intel(R) Core(TM) i3-1115G4 @ 3.00GHz CPU (very normal CPU).
+
+Used 10,000 dummy users and 20,000 orders.
+
+Test | AVL DB (seconds) | MySQL (seconds)
+:--- | ---: | ---:
+Creation of both tables | 0.0 | -
+Loaded 10,000 users from .csv to memory RAM | 0.12057 | -
+Loaded 20,000 orders from .csv to memory RAM | 0.29318 | -
+Write 30,000 rows from RAM to .pkl file | 0.09558 | -
+Load 30,000 rows from .pkl to memory RAM | 0.10949 | -
+From 10,000 users select those older than 25 yeard old | 0.00709 | -
+Joining ``users`` and ``orders`` tables, total 17,358 rows | 0.16644 | -
