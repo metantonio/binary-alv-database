@@ -2,6 +2,10 @@
 
 An implementation of the [AVL tree](https://en.wikipedia.org/wiki/AVL_tree) to store data. I'm also include basic transaction handling with commit and rollback methods using in-memory snapshots and saving it to a .pkl (binary file)
 
+<a href="#">
+    <img src="./avl_gif.gif" />
+</a>
+
 # The Only necessary file
 
 `databasestructure.py`
