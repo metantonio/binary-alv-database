@@ -15,32 +15,32 @@ file_name2='dummy_orders.csv'
 file_path2 = path_csv2 + file_name2
 products = ["apple", "laptop", "smartphone", "watch", "tv", "pear"]
 
-# Abrir el archivo CSV para escribir
+# Open csv file for users
 with open(file_path, mode='w', newline='') as file:
     writer = csv.writer(file)
     
-    # Escribir la fila de encabezado
+    # Headers row
     writer.writerow(['id', 'name', 'age'])
     
-    # Generar y escribir los datos de los usuarios
+    # Generate and write data
     for user_id in range(1, num_users + 1):
         name = "Name " + str(user_id)
-        age = int(random.randint(min_age, max_age))  # Generar una edad aleatoria entre 18 y 90
+        age = int(random.randint(min_age, max_age))  # Generar a random age
         writer.writerow([int(user_id), name, age])
 
 print("File 1 generated")
 
-# Abrir el archivo CSV para escribir
+# Open csv file for orders
 with open(file_path2, mode='w', newline='') as file:
     writer = csv.writer(file)
     
-    # Escribir la fila de encabezado
+    # Headers row
     writer.writerow(['order_id', 'user_id', 'product'])
     
-    # Generar y escribir los datos de los usuarios
+    # Generate and write data
     for order_id in range(1, num_users*2 + 1):
         product = random.choice(products)
-        user_id = int(random.randint(1, num_users))  # Generar una edad aleatoria entre 18 y 90
+        user_id = int(random.randint(1, num_users))  # Generate a random user_id
         writer.writerow([int(order_id), user_id, product])
 
 print("File 2 generated")
