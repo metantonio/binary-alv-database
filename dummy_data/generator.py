@@ -38,7 +38,7 @@ with open(file_path2, mode='w', newline='') as file:
     writer.writerow(['order_id', 'user_id', 'product'])
     
     # Generar y escribir los datos de los usuarios
-    for order_id in range(1, num_users + 1):
+    for order_id in range(1, num_users*2 + 1):
         product = random.choice(products)
         user_id = random.randint(1, num_users)  # Generar una edad aleatoria entre 18 y 90
         writer.writerow([order_id, user_id, product])
